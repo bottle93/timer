@@ -48,7 +48,7 @@ class Counter extends Component {
     }
 
     render() {
-        if(! this.state.onSuccess) {
+        if(!this.state.onSuccess) {
             return (
                 <div>
                     <div>
@@ -66,7 +66,7 @@ class Counter extends Component {
                         <button onClick={() => this.resetTimer()}>Reset</button>
                     </div>
                 </div>)
-        } else {
+        } else if (this.state.onSuccess && this.state.from > 0){
             return (
                 <div>
                     <h1>STOP!</h1>
