@@ -6,7 +6,6 @@ class Counter extends Component {
         super();
         this.state = {
             to: 0,
-            onSuccess: false,
             from: 0,
         }
     };
@@ -25,9 +24,6 @@ class Counter extends Component {
                 })
             }
             else {
-                this.setState({
-                    onSuccess: true,
-                });
                 clearInterval(interval);
             }
         }, 1000);
@@ -35,58 +31,37 @@ class Counter extends Component {
     };
 
     niceFromDisplay() {
-        let view = this.state.from
-        let minSec = parseInt(view / 60) + ':' + (view % 60)
+        let view = this.state.from;
+        let minSec = Math.floor((Number(view) / 60)) + ':' + Math.floor((view % 60))
         return minSec
     };
 
     resetTimer() {
         this.setState({
             from: 0,
-            onSuccess: false,
         });
     }
 
     render() {
-        if(!this.state.onSuccess) {
-            return (
-                <div>
-                    <div>
-                        {this.niceFromDisplay()}
-                    </div>
-                    <div>
-                        <label htmlFor="inputNum">Set value in seconds</label>
-                        <input
-                            id="inputNum"
-                            type="text"
-                            placeholder={this.state.from}
-                            onChange={(e) => this.setCounterValue(e.target.value)}
-                            maxlength="4"/>
-                        <button onClick={() => this.setTimer()}>Set Timer</button>
-                        <button onClick={() => this.resetTimer()}>Reset</button>
-                    </div>
-                </div>)
-        } else if (this.state.onSuccess && this.state.from > 0){
-            return (
-                <div>
-                    <h1>STOP!</h1>
-                    <div>
-                        {this.state.from}
-                    </div>
-                    <div>
-                        <label htmlFor="inputNum">Set value in seconds</label>
-                        <input
-                            id="inputNum"
-                            type="text"
-                            placeholder={this.state.from}
-                            onChange={(e) => this.setCounterValue(e.target.value)}
-                            maxlength="4"/>
-                        <button onClick={() => this.setTimer()}>Set Timer</button>
-                    </div>
-                </div>)
-        }
+        return (
+            <div className='timer__main'>
+                <div className='timer__counter'>
+                    {this.niceFromDisplay()}
+                </div>
+                <div className='timer__set-timer'>
+                    <label className='timer__text' htmlFor="inputNum">Set value in seconds:</label>
+                    <input
+                        className='timer__input'
+                        id="inputNum"
+                        type="text"
+                        placeholder={this.state.from}
+                        onChange={(e) => this.setCounterValue(e.target.value)}
+                        maxlength="6"/>
+                    <button className='timer__button-set' onClick={() => this.setTimer()}>Set Timer</button>
+                    <button className='timer__button-reset' onClick={() => this.resetTimer()}>Reset</button>
+                </div>
+            </div>)
     }
-
 }
 
 

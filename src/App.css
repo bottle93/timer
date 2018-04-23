@@ -1,28 +1,37 @@
 .App {
+  max-width: 600px;
   text-align: center;
+  margin: 0 auto;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.timer__main {
+  margin: 50px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.timer__counter {
+  font-size: 2rem;
+  color: blue;
+  margin: 30px;
 }
 
-.App-title {
-  font-size: 1.5em;
+.timer__set-timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
 }
 
-.App-intro {
-  font-size: large;
+.timer__text {
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.timer__input {
+  margin:15px;
+
+}
+
+.timer__button-set,
+.timer__button-reset{
+  margin:15px;
+  padding: 10px;
+  border-radius: 5px;
 }
